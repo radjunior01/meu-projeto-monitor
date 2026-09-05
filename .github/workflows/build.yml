@@ -13,19 +13,16 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v4 # O aviso de v5 é apenas um alerta, v4 ainda funciona bem
+      uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: 'gradle'
 
-    - name: Make Gradlew Executable
-      run: |
-        chmod +x gradlew
-        ./gradlew --version
-
-    - name: Build with Gradle
-      run: ./gradlew assembleDebug
+    - name: Build with Gradle (Direct)
+      # Aqui mudamos de ./gradlew para apenas 'gradle'
+      # Isso usa o Gradle pré-instalado no servidor do GitHub
+      run: gradle assembleDebug 
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
