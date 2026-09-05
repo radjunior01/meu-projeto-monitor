@@ -1,22 +1,9 @@
-// build.gradle (ROOT PROJECT)
+// build.gradle (na Raiz)
 
-// Vamos usar o bloco de plugins de forma mais direta
 plugins {
     id 'com.android.application' version '8.1.0' apply false
     id 'com.android.library' version '8.1.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
 }
 
-// Este bloco é o que o seu erro apontou como faltando
-// Vamos garantir que ele seja aplicado a todos os módulos (incluindo o app)
-subprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-// Task de limpeza básica
-tasks.register('clean', Delete) {
-    delete rootProject.buildDir
-}
+// Não precisa de repositórios aqui, pois já colocamos no settings.gradle
