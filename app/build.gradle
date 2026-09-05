@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.exemplo.monitor'
-    compileSdk 33 // Versão do SDK para compilação
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.exemplo.monitor"
-        minSdk 26    // Versão mínima do Android para rodar
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
