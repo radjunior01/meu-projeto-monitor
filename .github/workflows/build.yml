@@ -1,0 +1,28 @@
+name: Android Build CI
+
+on:
+  push:
+    branches: [ main ] # Dispara o build quando você faz um push para a branch main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Usa um servidor Linux no GitHub
+
+    steps:
+    - uses: actions/checkout@v3 # Baixa seu código
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    - name: Build with Gradle
+      run: ./gradlew assembleDebug # Comando para compilar o APK de teste
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v3 # Salva o APK para você baixar
+      with:
+        name: monitor-app-apk
+        path: app/build/outputs/apk/debug/app-debug.apk
