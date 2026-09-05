@@ -1,15 +1,10 @@
-// build.gradle (ROOT PROJECT)
 
-// 1. Configuração de Plugins: Define as ferramentas que serão usadas
-// O 'apply false' é crucial aqui. Ele diz ao Gradle: 
-// "Prepare este plugin, mas não o aplique na raiz, espere o módulo 'app' pedir."
 plugins {
     id 'com.android.application' version '8.1.0' apply false
     id 'com.android.library' version '8.1.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
 }
 
-// 2. Configuração de Repositórios: Onde o Gradle buscará as bibliotecas (como as do Google)
 allprojects {
     repositories {
         google()        // Repositório principal para bibliotecas Android
