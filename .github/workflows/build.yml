@@ -21,8 +21,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew assembleDebug # Comando para compilar o APK de teste
 
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v3 # Salva o APK para você baixar
+       - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4 # <--- Atualizado para a versão mais recente
       with:
         name: monitor-app-apk
         path: app/build/outputs/apk/debug/app-debug.apk
