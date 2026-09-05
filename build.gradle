@@ -1,31 +1,22 @@
 // build.gradle (ROOT PROJECT)
 
-// 1. Configuração de onde o Gradle deve buscar os PLUGINS
-pluginManagement {
-    repositories {
-        google()        // ESSENCIAL: Onde o plugin do Android reside
-        mavenCentral()  // Repositório padrão de plugins
-        gradlePluginPortal() 
-    }
-}
-
-// 2. Configuração de onde o projeto deve buscar as BIBLIOTECAS
-allprojects {
-    repositories {
-        google()        // ESSENCIAL: Onde as bibliotecas do Android residem
-        mavenCentral()
-    }
-}
-
-// 3. Definição dos plugins (sem aplicá-los na raiz)
+// Vamos usar o bloco de plugins de forma mais direta
 plugins {
     id 'com.android.application' version '8.1.0' apply false
     id 'com.android.library' version '8.1.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
 }
 
-// 4. Task de limpeza
+// Este bloco é o que o seu erro apontou como faltando
+// Vamos garantir que ele seja aplicado a todos os módulos (incluindo o app)
+subprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Task de limpeza básica
 tasks.register('clean', Delete) {
-    description = 'Deleta o diretório de build do projeto.'
     delete rootProject.buildDir
 }
